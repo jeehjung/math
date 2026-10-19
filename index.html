@@ -61,7 +61,7 @@ function render(){
  $('problemNo').textContent='문제 '+(index+1);$('score').textContent='맞힌 문제 '+score+' / '+problems.length;
  $('instruction').textContent=p.intro;
  $('words').innerHTML='<p class="sentence">'+p.storyA+'</p><p class="sentence">'+p.storyB+'</p><p class="sentence">'+p.storyTotal+' <input id="sentenceTotal" class="inline-answer" type="number" inputmode="numeric" aria-label="모두의 수"> '+p.unit+' 있습니다.</p>';
- $('pictures').innerHTML=row(p.aEmoji,p.a)+row(p.bEmoji,p.b)+row(p.aEmoji,p.a,true)+row(p.bEmoji,p.b,true);
+ $('pictures').innerHTML=row(p.aEmoji,p.a)+row(p.bEmoji,p.b)+row(p.aEmoji,p.a,true);
  // Show the combined set in a single lower picture row, like a workbook.
  const combined=$('pictures').lastElementChild;
  combined.innerHTML=Array.from({length:p.a},()=>'<span class="object" aria-hidden="true">'+p.aEmoji+'</span>').join('')+Array.from({length:p.b},()=>'<span class="object" aria-hidden="true">'+p.bEmoji+'</span>').join('');
