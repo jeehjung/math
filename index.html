@@ -6,39 +6,38 @@
 <meta name="theme-color" content="#f4f7ff">
 <title>그림 덧셈 놀이터</title>
 <style>
-:root{color-scheme:light;--ink:#24304a;--muted:#6c7891;--blue:#4263eb;--pale:#eef2ff;--green:#16845b;--pink:#ffedf2;--line:#e4e9f2}
+:root{color-scheme:light;--ink:#24304a;--muted:#6c7891;--blue:#4263eb;--pale:#eef2ff;--line:#e4e9f2}
 *{box-sizing:border-box}body{margin:0;background:linear-gradient(160deg,#f3f6ff,#fff9f3);font-family:system-ui,-apple-system,"Noto Sans KR",sans-serif;color:var(--ink);min-height:100vh}
 main{max-width:680px;margin:auto;padding:22px 16px 40px}.hero{text-align:center;padding:18px 8px 22px}.eyebrow{font-size:.8rem;font-weight:800;color:var(--blue);letter-spacing:.08em}.hero h1{font-size:clamp(1.8rem,6vw,2.5rem);margin:8px 0}.hero p{margin:0;color:var(--muted);line-height:1.6}
 .progress-wrap{background:#e6eaf3;height:8px;border-radius:99px;overflow:hidden;margin:16px 0 20px}.progress{height:100%;background:linear-gradient(90deg,#6786ff,#42c6a5);width:0;transition:width .25s}
-.card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:22px;box-shadow:0 10px 35px #27375b0b}.topline{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}.chip{border-radius:99px;background:var(--pale);color:var(--blue);font-size:.8rem;font-weight:800;padding:7px 11px}.count{font-size:.88rem;color:var(--muted)}.question{font-size:1.18rem;line-height:1.65;font-weight:750;margin:0 0 18px}
+.card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:22px;box-shadow:0 10px 35px #27375b0b}.topline{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}.chip{border-radius:99px;background:var(--pale);color:var(--blue);font-size:.8rem;font-weight:800;padding:7px 11px}.count{font-size:.88rem;color:var(--muted)}.question{font-size:1.12rem;line-height:1.65;font-weight:750;margin:0 0 18px}
 .objects{display:grid;grid-template-columns:1fr 1fr;gap:12px}.group{background:#f7f9ff;border-radius:18px;padding:15px 10px;text-align:center;min-width:0}.group:nth-child(2){background:#fff6f8}.group-label{font-size:.92rem;font-weight:800;margin-bottom:11px}.icons{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:5px;min-height:52px;font-size:clamp(1.4rem,5vw,2rem)}.quantity{font-size:.84rem;color:var(--muted);margin-top:9px}
-.prompt{margin:20px 0 12px;text-align:center;font-weight:750}.choices{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.choice{border:2px solid var(--line);background:#fff;border-radius:15px;padding:14px 8px;font-size:1.35rem;font-weight:850;color:var(--ink);cursor:pointer;transition:.15s}.choice:focus-visible,.btn:focus-visible{outline:3px solid #91a7ff;outline-offset:2px}.choice.selected{border-color:var(--blue);background:var(--pale);color:#2948c8}.choice:disabled{cursor:default}
-.feedback{margin-top:15px;border-radius:15px;background:#f5f7fb;padding:13px 15px;line-height:1.6}.feedback.good{background:#e9f8f0;color:#126c49}.feedback.try{background:#fff6e7;color:#80510a}.feedback strong{display:block;margin-bottom:3px}.actions{display:flex;gap:10px;margin-top:18px}.btn{border:0;border-radius:15px;padding:14px 16px;font-weight:800;font-size:1rem;cursor:pointer}.btn-primary{background:var(--blue);color:white;flex:1}.btn-secondary{background:#f0f2f8;color:var(--ink)}.btn:disabled{opacity:.4;cursor:not-allowed}
-.tips{font-size:.9rem;color:var(--muted);line-height:1.65;margin:17px 4px 0}.hidden{display:none!important}.finish{text-align:center;padding:14px 0}.trophy{font-size:3rem}.finish h2{font-size:1.65rem;margin:8px 0}.finish p{color:var(--muted);line-height:1.65}
-@media(max-width:390px){.card{padding:17px}.group{padding:12px 7px}.actions{flex-direction:column}.btn-secondary{width:100%}}
+.equation-title{text-align:center;font-weight:800;margin:22px 0 12px}.equation{display:flex;justify-content:center;align-items:center;gap:clamp(7px,2.5vw,15px);padding:17px 8px;background:#f7f9ff;border-radius:18px}.number-input{width:clamp(58px,17vw,82px);height:64px;border:2px solid #d8dfed;border-radius:13px;background:white;text-align:center;font-size:1.7rem;font-weight:850;color:var(--ink);outline:none;min-width:0}.number-input:focus{border-color:var(--blue);box-shadow:0 0 0 3px #4263eb22}.number-input:disabled{background:#f2f4f8}.operator{font-size:1.7rem;font-weight:800;color:#63708b}.feedback{margin-top:15px;border-radius:15px;background:#f5f7fb;padding:13px 15px;line-height:1.6}.feedback.good{background:#e9f8f0;color:#126c49}.feedback.try{background:#fff6e7;color:#80510a}.feedback strong{display:block;margin-bottom:3px}
+.actions{display:flex;gap:10px;margin-top:18px}.btn{border:0;border-radius:15px;padding:14px 16px;font-weight:800;font-size:1rem;cursor:pointer}.btn-primary{background:var(--blue);color:white;flex:1}.btn-secondary{background:#f0f2f8;color:var(--ink)}.btn:disabled{opacity:.4;cursor:not-allowed}.btn:focus-visible{outline:3px solid #91a7ff;outline-offset:2px}
+.tips{font-size:.9rem;color:var(--muted);line-height:1.65;margin:17px 4px 0}.hidden{display:none!important}.finish{text-align:center;padding:28px 18px}.trophy{font-size:3rem}.finish h2{font-size:1.65rem;margin:8px 0}.finish p{color:var(--muted);line-height:1.65}
+@media(max-width:390px){.card{padding:17px}.group{padding:12px 7px}.actions{flex-direction:column}.btn-secondary{width:100%}.number-input{height:57px}}
 </style>
 </head>
 <body>
 <main>
-<header class="hero">
-  <div class="eyebrow">초등 수학 · 8살 추천</div>
-  <h1>🎨 그림 덧셈 놀이터</h1>
-  <p>그림을 하나씩 세어 보고<br>모두 몇 개인지 찾아보세요!</p>
-</header>
+<header class="hero"><div class="eyebrow">초등 수학 · 8살 추천</div><h1>🎨 그림 덧셈 놀이터</h1><p>그림을 하나씩 세고<br>빈칸에 숫자를 직접 써 보세요!</p></header>
 <div class="progress-wrap" aria-label="진행 상황"><div id="progress" class="progress"></div></div>
 <section id="quiz" class="card" aria-live="polite">
-  <div class="topline"><span id="level" class="chip">문제 1</span><span id="count" class="count">0 / 3 정답</span></div>
-  <p id="question" class="question"></p>
-  <div id="objects" class="objects"></div>
-  <div class="prompt">모두 몇 개일까요?</div>
-  <div id="choices" class="choices"></div>
-  <div id="feedback" class="feedback hidden" role="status"></div>
-  <div class="actions"><button id="check" class="btn btn-primary" disabled>정답 확인</button><button id="next" class="btn btn-secondary hidden">다음 문제 →</button></div>
-  <p class="tips">💡 힌트: 첫 번째 그림의 개수를 세고, 두 번째 그림의 개수를 센 다음 두 수를 더해 보세요.</p>
+<div class="topline"><span id="level" class="chip">문제 1</span><span id="count" class="count">0 / 3 정답</span></div>
+<p id="question" class="question"></p><div id="objects" class="objects"></div>
+<div class="equation-title">그림의 개수와 모두의 개수를 써 보세요.</div>
+<div class="equation" aria-label="덧셈식 입력">
+<input id="first" class="number-input" type="number" inputmode="numeric" min="0" max="99" aria-label="첫 번째 숫자" autocomplete="off">
+<span class="operator" aria-hidden="true">+</span>
+<input id="second" class="number-input" type="number" inputmode="numeric" min="0" max="99" aria-label="두 번째 숫자" autocomplete="off">
+<span class="operator" aria-hidden="true">=</span>
+<input id="total" class="number-input" type="number" inputmode="numeric" min="0" max="99" aria-label="합계" autocomplete="off">
+</div>
+<div id="feedback" class="feedback hidden" role="status"></div>
+<div class="actions"><button id="check" class="btn btn-primary">정답 확인</button><button id="next" class="btn btn-secondary hidden">다음 문제 →</button></div>
+<p class="tips">💡 첫 번째 그림의 개수를 첫 번째 칸에, 두 번째 그림의 개수를 두 번째 칸에 써 보세요. 마지막 칸에는 모두 몇 개인지 쓰면 돼요.</p>
 </section>
-<section id="finish" class="card finish hidden" aria-live="polite">
-  <div class="trophy">🎉</div><h2>참 잘했어요!</h2><p id="result"></p><button id="restart" class="btn btn-primary">다시 풀기</button>
-</section>
+<section id="finish" class="card finish hidden" aria-live="polite"><div class="trophy">🎉</div><h2>참 잘했어요!</h2><p id="result"></p><button id="restart" class="btn btn-primary">다시 풀기</button></section>
 </main>
 <script>
 const problems=[
@@ -46,35 +45,40 @@ const problems=[
  {aName:"사과",aEmoji:"🍎",a:6,bName:"바나나",bEmoji:"🍌",b:3,story:"사과가 6개 있고 바나나가 3개 있어요."},
  {aName:"자동차",aEmoji:"🚗",a:7,bName:"버스",bEmoji:"🚌",b:2,story:"자동차가 7대 있고 버스가 2대 있어요."}
 ];
-let index=0,selected=null,checked=false,score=0;
+let index=0,checked=false,score=0;
 const $=id=>document.getElementById(id);
-function makeGroup(name,emoji,n){return '<div class="group"><div class="group-label">'+name+'</div><div class="icons" aria-label="'+name+' '+n+'개">'+Array.from({length:n},()=>'<span aria-hidden="true">'+emoji+'</span>').join('')+'</div><div class="quantity">모두 '+n+'개</div></div>'}
-function optionsFor(answer){let vals=[answer,answer-1,answer+1].filter(v=>v>=1&&v<=20);while(vals.length<3){const v=answer+vals.length+1;if(!vals.includes(v))vals.push(v)}return vals.sort(()=>Math.random()-.5)}
+function makeGroup(name,emoji,n){return '<div class="group"><div class="group-label">'+name+'</div><div class="icons" aria-label="'+name+' '+n+'개">'+Array.from({length:n},()=>'<span aria-hidden="true">'+emoji+'</span>').join('')+'</div><div class="quantity">그림 '+n+'개</div></div>'}
 function render(){
- const p=problems[index];selected=null;checked=false;
+ const p=problems[index];checked=false;
  $('quiz').classList.remove('hidden');$('finish').classList.add('hidden');
  $('level').textContent='문제 '+(index+1);$('count').textContent=score+' / 3 정답';
- $('question').textContent=p.story+' 모두 몇 개일까요?';
+ $('question').textContent=p.story+' 그림을 보고 덧셈식을 완성해 보세요.';
  $('objects').innerHTML=makeGroup(p.aName,p.aEmoji,p.a)+makeGroup(p.bName,p.bEmoji,p.b);
+ ['first','second','total'].forEach(id=>{const el=$(id);el.value='';el.disabled=false;el.setAttribute('aria-invalid','false')});
  $('feedback').className='feedback hidden';$('feedback').textContent='';
- $('check').classList.remove('hidden');$('check').disabled=true;$('next').classList.add('hidden');
+ $('check').classList.remove('hidden');$('check').disabled=false;$('next').classList.add('hidden');
  $('progress').style.width=(index/3*100)+'%';
- $('choices').innerHTML='';
- optionsFor(p.a+p.b).forEach(n=>{const b=document.createElement('button');b.className='choice';b.type='button';b.textContent=n;b.setAttribute('aria-label',n+'개');b.addEventListener('click',()=>selectAnswer(n,b));$('choices').appendChild(b)});
 }
-function selectAnswer(n,button){if(checked)return;selected=n;document.querySelectorAll('.choice').forEach(b=>b.classList.toggle('selected',b===button));$('check').disabled=false}
 function checkAnswer(){
- if(selected===null||checked)return;checked=true;const p=problems[index],answer=p.a+p.b,ok=selected===answer;
+ if(checked)return;
+ const p=problems[index],v1=$('first').value.trim(),v2=$('second').value.trim(),v3=$('total').value.trim();
+ if(v1===''||v2===''||v3===''){
+  const f=$('feedback');f.className='feedback try';f.textContent='세 칸에 숫자를 모두 써 주세요.';return;
+ }
+ checked=true;
+ const ok=Number(v1)===p.a&&Number(v2)===p.b&&Number(v3)===p.a+p.b;
  if(ok)score++;
- document.querySelectorAll('.choice').forEach(b=>{b.disabled=true;if(Number(b.textContent)===answer)b.classList.add('selected')});
  const f=$('feedback');f.className='feedback '+(ok?'good':'try');
- f.innerHTML=ok?'<strong>🌟 정답이에요!</strong>정말 잘했어요! '+p.a+' + '+p.b+' = '+answer:'<strong>한 번 더 생각해 봐요!</strong>'+p.aName+'은 '+p.a+'개, '+p.bName+'은 '+p.b+'개예요. 두 수를 더하면 몇 개일까요?';
+ f.innerHTML=ok?'<strong>🌟 모두 맞았어요!</strong>'+p.a+' + '+p.b+' = '+(p.a+p.b)+'. 정말 잘했어요!':'<strong>다시 그림을 세어 보세요.</strong>첫 번째 칸에는 '+p.a+', 두 번째 칸에는 '+p.b+', 마지막 칸에는 '+(p.a+p.b)+'을(를) 써야 해요.';
+ ['first','second','total'].forEach(id=>$(id).disabled=true);
  $('count').textContent=score+' / 3 정답';$('check').classList.add('hidden');$('next').classList.remove('hidden');$('next').textContent=index===2?'결과 보기':'다음 문제 →';
  $('progress').style.width=((index+1)/3*100)+'%';
 }
 function next(){if(index<2){index++;render()}else{showFinish()}}
 function showFinish(){$('quiz').classList.add('hidden');$('finish').classList.remove('hidden');$('progress').style.width='100%';$('result').textContent='3문제를 모두 풀었어요. '+score+'문제를 맞혔습니다. '+(score===3?'덧셈 실력이 멋져요!':'괜찮아요. 다시 풀면서 그림을 하나씩 세어 봐요.') }
-$('check').addEventListener('click',checkAnswer);$('next').addEventListener('click',next);$('restart').addEventListener('click',()=>{index=0;score=0;render()});render();
+$('check').addEventListener('click',checkAnswer);$('next').addEventListener('click',next);$('restart').addEventListener('click',()=>{index=0;score=0;render()});
+['first','second','total'].forEach((id,i,ids)=>$(id).addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();if(i<ids.length-1)$(ids[i+1]).focus();else checkAnswer()}}));
+render();
 </script>
 </body>
 </html>
