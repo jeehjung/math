@@ -24,7 +24,7 @@ main{max-width:900px;margin:auto;padding:18px 14px 38px}.hero{text-align:center;
 <header class="hero"><div class="eyebrow">초등 수학 · 덧셈 문장제</div><h1>📝 그림 덧셈 문제</h1><p>글을 읽고, 그림을 세어 보세요.<br>빈칸에 알맞은 수를 직접 써 넣어요.</p></header>
 <div class="progress"><div id="progressBar" class="progress-fill"></div></div>
 <section id="quiz" class="sheet">
-<div class="sheet-head"><span id="problemNo" class="tag">문제 1</span><span id="score" class="score">맞힌 문제 0 / 2</span></div>
+<div class="sheet-head"><span id="problemNo" class="tag">문제 1</span><span id="score" class="score">맞힌 문제 0 / 3</span></div>
 <p id="instruction" class="instruction">글을 읽고, 빈칸에 알맞은 수를 써 넣으세요.</p>
 <div class="worksheet">
 <div class="words" id="words"></div>
@@ -40,10 +40,22 @@ main{max-width:900px;margin:auto;padding:18px 14px 38px}.hero{text-align:center;
 <script>
 (function(){
 'use strict';
-const problems=[
- {aEmoji:"🚙",a:5,bEmoji:"🔫",b:7,unit:"개",storyA:"장난감 자동차가 5개 있습니다.",storyB:"장난감 총이 7개 있습니다.",storyTotal:"장난감 자동차와 장난감 총은 모두",intro:"장난감 자동차와 장난감 총의 개수를 더해 보세요."},
- {aEmoji:"🦆",a:6,bEmoji:"🐔",b:4,unit:"마리",storyA:"오리가 6마리 있습니다.",storyB:"닭이 4마리 있습니다.",storyTotal:"오리와 닭은 모두",intro:"오리와 닭의 수를 더해 보세요."}
-];
+function makeProblems(){
+ const bank=[
+  {aName:"장난감 자동차",aEmoji:"🚙",bName:"장난감 블록",bEmoji:"🧱",unit:"개",storyA:"장난감 자동차가 {a}개 있습니다.",storyB:"장난감 블록이 {b}개 있습니다.",storyTotal:"장난감 자동차와 장난감 블록은 모두",intro:"장난감 자동차와 장난감 블록의 개수를 더해 보세요."},
+  {aName:"오리",aEmoji:"🦆",bName:"닭",bEmoji:"🐔",unit:"마리",storyA:"오리가 {a}마리 있습니다.",storyB:"닭이 {b}마리 있습니다.",storyTotal:"오리와 닭은 모두",intro:"오리와 닭의 수를 더해 보세요."},
+  {aName:"사과",aEmoji:"🍎",bName:"배",bEmoji:"🍐",unit:"개",storyA:"사과가 {a}개 있습니다.",storyB:"배가 {b}개 있습니다.",storyTotal:"사과와 배는 모두",intro:"사과와 배의 개수를 더해 보세요."},
+  {aName:"물고기",aEmoji:"🐟",bName:"문어",bEmoji:"🐙",unit:"마리",storyA:"물고기가 {a}마리 있습니다.",storyB:"문어가 {b}마리 있습니다.",storyTotal:"물고기와 문어는 모두",intro:"물고기와 문어의 수를 더해 보세요."},
+  {aName:"연필",aEmoji:"✏️",bName:"지우개",bEmoji:"🧽",unit:"개",storyA:"연필이 {a}개 있습니다.",storyB:"지우개가 {b}개 있습니다.",storyTotal:"연필과 지우개는 모두",intro:"연필과 지우개의 개수를 더해 보세요."},
+  {aName:"버스",aEmoji:"🚌",bName:"자동차",bEmoji:"🚗",unit:"대",storyA:"버스가 {a}대 있습니다.",storyB:"자동차가 {b}대 있습니다.",storyTotal:"버스와 자동차는 모두",intro:"버스와 자동차의 수를 더해 보세요."}
+ ];
+ const shuffled=bank.slice().sort(()=>Math.random()-.5).slice(0,3);
+ return shuffled.map(item=>{
+  const a=2+Math.floor(Math.random()*6), b=2+Math.floor(Math.random()*6);
+  return {...item,a,b,storyA:item.storyA.replace("{a}",a),storyB:item.storyB.replace("{b}",b)};
+ });
+}
+const problems=makeProblems();
 let index=0,score=0,checked=false;
 function el(id){return document.getElementById(id)}
 function makeRow(emoji,n,total){let html='<div class="picture-row'+(total?' total-row':'')+'" aria-label="'+n+'개">';for(let i=0;i<n;i++)html+='<span class="object" aria-hidden="true">'+emoji+'</span>';return html+'</div>'}
@@ -79,7 +91,7 @@ function checkAnswer(){
  el('progressBar').style.width=((index+1)/problems.length*100)+'%';
 }
 function next(){if(index<problems.length-1){index++;render()}else{finish()}}
-function finish(){el('quiz').classList.add('hidden');el('finish').classList.remove('hidden');el('progressBar').style.width='100%';el('result').textContent='두 문제를 모두 풀었어요. '+score+'문제를 맞혔습니다. '+(score===problems.length?'덧셈 실력이 멋져요!':'괜찮아요. 그림을 세면서 다시 연습해 봐요.')}
+function finish(){el('quiz').classList.add('hidden');el('finish').classList.remove('hidden');el('progressBar').style.width='100%';el('result').textContent='세 문제를 모두 풀었어요. '+score+'문제를 맞혔습니다. '+(score===problems.length?'덧셈 실력이 멋져요!':'괜찮아요. 그림을 세면서 다시 연습해 봐요.')}
 function restart(){index=0;score=0;el('quiz').classList.remove('hidden');el('finish').classList.add('hidden');render()}
 el('check').addEventListener('click',checkAnswer);
 el('next').addEventListener('click',next);
